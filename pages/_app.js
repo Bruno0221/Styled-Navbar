@@ -13,6 +13,29 @@ const StyledList = styled.ul`
   gap: 1rem;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.1em;
+    background-color: black;
+    opacity: 0;
+    transition: opacity 300ms, transform 300ms;
+  }
+
+  &:hover::after {
+    opacity: 1;
+    transform: translate3d(0, 0.2em, 0);
+  }
+`;
+
 export default function App({ Component, pageProps }) {
   return (
     <>
@@ -20,13 +43,13 @@ export default function App({ Component, pageProps }) {
       <StyledNav>
         <StyledList>
           <li>
-            <Link href="/">Home</Link>
+            <StyledLink href="/">Home</StyledLink>
           </li>
           <li>
-            <Link href="/about">About</Link>
+            <StyledLink href="/about">About</StyledLink>
           </li>
           <li>
-            <Link href="/contact">Contact</Link>
+            <StyledLink href="/contact">Contact</StyledLink>
           </li>
         </StyledList>
       </StyledNav>
